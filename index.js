@@ -98,6 +98,8 @@ const run = async () => {
   if(bodyMatchArray && bodyMatchArray.length === 4){
     var repos = bodyMatchArray[2].split('\n').filter(line => line.startsWith('- [x]')).map(line => line.match(extractReposRegex)[1].trim());
     const labelsForSubIssues = metaIssueLabels.filter(l => !labelsToExclude.includes(l));
+    
+    console.log("Labels for sub issues: " + labelsForSubIssues);
     var specIssueNumber = undefined;
     if(repos.some(r => r.toLowerCase().startsWith('spec'))){
       repos = repos.filter(r => !(r.toLowerCase().startsWith('spec')));
